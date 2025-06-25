@@ -9,11 +9,11 @@ class UserController extends Controller
     //Show All User List
     public function index(){
         $users=User::all();
-        return view('user-list',compact('users'));
+        return view('user.user-list',compact('users'));
     }
     //Show User Create Form
     public function create(){
-        return view('user-form');
+        return view('user.user-form');
     }
 
     // Store user data 
@@ -36,7 +36,7 @@ class UserController extends Controller
         User::create($request->all());
         return redirect()->route('user.index');
     }
-    
+
     public function update(Request $request,$id){
          $request->validate([
             'name'=>'required',
@@ -52,7 +52,7 @@ class UserController extends Controller
 
     public function edit($id){
         $users=User::findorfail($id);
-        return view('user-edit',compact('users'));
+        return view('user.user-edit',compact('users'));
     }
 
     //User Delete
